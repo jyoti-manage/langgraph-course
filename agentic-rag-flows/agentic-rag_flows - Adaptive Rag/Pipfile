@@ -1,0 +1,24 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+beautifulsoup4 = "*"
+langchain = "*"
+langgraph = "*"
+langchainhub = "*"
+langchain-community = "*"
+tavily-python = "*"
+langchain-groq = "*"
+chromadb = "*"
+python-dotenv = "*"
+pytest = "*"
+langchain-chroma = "*"
+sentence-transformers = "*"
+langchain-tavily = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
