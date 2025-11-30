@@ -51,7 +51,7 @@ if __name__ == "__main__":
 
     user_input = input("Tell me how you want to update the state: ") # in the interrupt
 
-    graph.update_state(thread, {"user_feedback": user_input}, as_node="human_feedback") # So we'll update the current thread so its thread ID 1 and in the state -> user_feedback with user's choice. And we'll want to use the keyword of as_node equals human feedback. And this will actually update as if the node ran and updated the value in the execution. (and the graph will start from after the human_feedback node)
+    graph.update_state(thread, {"user_feedback": user_input}, as_node="human_feedback") # So we'll update the current thread so its thread ID 1 and in the state -> user_feedback with user's choice. And we'll want to use the keyword of as_node equals human feedback. And this will actually update as if the node ran and updated the value in the execution. so, because you specify as_node="human_feedback", the graph begins partially executing from human_feedback node immediately.The graph.update_state() method in langgraph manually updates the current state of a running graph (thread) with new values, simulating as if these updates originated from a specific node (human_feedback), without actually executing the corresponding node function. (and the graph will start from after the human_feedback node when again graph.stream() is called)
 
     # pass
     # breakpoint and debug (graph.get_state(thread))
