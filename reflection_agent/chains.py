@@ -14,7 +14,7 @@ reflection_prompt = ChatPromptTemplate.from_messages(
             "You are a viral twitter influencer grading a tweet. Generate critique and recommendations for the user's tweet."
             "Always provide detailed recommendations, including requests for length, virality, style, etc.",
         ),
-        MessagesPlaceholder(variable_name="messages"), # messages will be like[("human", "..."), (AI, "response")]
+        MessagesPlaceholder(variable_name="messages"), # messages will be like [("human", "..."), (AI, "response")], since this is how ChatPromptTemplate works and takes messages.
         # historical messages that agent will use to critique and provide recommendations over and over again
     ]
 )
