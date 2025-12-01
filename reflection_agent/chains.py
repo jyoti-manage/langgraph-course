@@ -7,6 +7,19 @@ from langchain_groq import ChatGroq
 # And we will implement the chain of reflection. So this chain will take our tweet and give us feedback. It will criticize it. And it's going to give us suggestions on how to improve it again and again. And at each iteration of our cycle in our graph, we will introduce this criticism into our generation chain and it will revise the tweet.
 
 
+
+# ChatPromptTemplate store the message like = [("system", "You are a helpful AI bot. Your name is {name}."),
+#             ("human", "Hello, how are you doing?"),
+#             ("ai", "I'm doing well, thanks!")]
+# which become:
+# ChatPromptValue(
+#    messages=[
+#        SystemMessage(content='You are a helpful AI bot. Your name is Bob.'),
+#        HumanMessage(content='Hello, how are you doing?'),
+#        AIMessage(content="I'm doing well, thanks!"),
+#        HumanMessage(content='What is your name?')
+#    ]
+# )
 reflection_prompt = ChatPromptTemplate.from_messages(
     [
         (
