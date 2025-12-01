@@ -57,5 +57,5 @@ if __name__ == "__main__":
 
 # when __call__ is executed:
 # So when they add a node using builder.add_node, it's just registering the __call__ function to be run later, not executing it. The call actually happens once the graph is invoked, particularly after compiling or triggering the graph.
-# after we call compile the graph, then because of add_edge, __call__ is executed (my observation)
+# after we call compile the graph and invoke it, then because of add_edge, __call__ is executed because normally we have chains or functions as node which are called when we execute the graph, but this time, it is a class object as a node. and as usually it calls object on execution of the graph, because of which __call__() get executed(my observation)
 
