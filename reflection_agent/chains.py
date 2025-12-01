@@ -14,7 +14,7 @@ reflection_prompt = ChatPromptTemplate.from_messages(
             "You are a viral twitter influencer grading a tweet. Generate critique and recommendations for the user's tweet."
             "Always provide detailed recommendations, including requests for length, virality, style, etc.",
         ),
-        MessagesPlaceholder(variable_name="messages"),
+        MessagesPlaceholder(variable_name="messages"), # messages will be like[("human", "..."), (AI, "response")]
         # historical messages that agent will use to critique and provide recommendations over and over again
     ]
 )
@@ -40,5 +40,5 @@ llm = ChatGroq(
     timeout=None,
     max_retries=2
     )
-generate_chain = generation_prompt | llm
+generate_chain = generation_prompt | llm  # return AIMessage object
 reflect_chain = reflection_prompt | llm
