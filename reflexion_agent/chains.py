@@ -97,6 +97,19 @@ if __name__ == "__main__":
     )
 
     res = chain.invoke(input={"messages": [human_message]})
+    # To run a LangGraph workflow asynchronously with async nodes, define your nodes as async def functions and execute the graph using the await app.ainvoke() method (or app.astream() for streaming) within an asynchronous context. Ensure your nodes are defined using async def. Inside these nodes, use the await keyword for any asynchronous operations, such as calling an LLM's ainvoke(), tool.ainvoke() method or using asyncio.gather() for concurrent tasks. Compile the graph and invoke it using await app.ainvoke() within an asyncio event loop:
+    # async def run_graph():
+    # # Invoke the graph asynchronously
+    # final_state = await compiled_app.ainvoke(
+    #     {"messages": ["initial user message"]},
+    #     # Optional: configure for streaming events
+    #     # config={"stream_mode": ["messages-tuple"]}
+    # )
+    # print(final_state["messages"][-1].content)
+
+# Run the main async function
+if __name__ == "__main__":
+    asyncio.run(run_graph())
     print(res)
 
     # And we got an error saying that we didn't provide the search queries field to answer question object. So this means that when the LLM produced the response it didn't actually give us a search queries in the answer (and this error is very normal while using pydantic). And this can be resolved if we do some prompt engineering like saying you must provide the search queries at all costs or something like that. Or even better, maybe to try and split up this query into a different prompt that will run independently.
